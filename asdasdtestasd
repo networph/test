@@ -226,7 +226,7 @@ function WindowTable:Window(Htitle,GMtitle,toclose)
 	
 	LeftFrame.Name = "LeftFrame"
 	LeftFrame.Parent = MainFrame
-	LeftFrame.BackgroundColor3 = Color3.fromRGB(31, 28, 54)
+	LeftFrame.BackgroundColor3 = Color3.fromRGB(24, 24 ,24)
 	LeftFrame.BorderSizePixel = 0
 	LeftFrame.ClipsDescendants = true
 	LeftFrame.Size = UDim2.new(0, 41, 0, 331)
