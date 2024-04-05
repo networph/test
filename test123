@@ -262,7 +262,7 @@ function Library:Window(options)
         tabSectionLayout.Parent = tabSection
         tabSectionLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         tabSectionLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        tabSectionLayout.Padding = UDim.new(0, 9)
+        tabSectionLayout.Padding = UDim.new(0, 15)
 
         local tabs = {}
 
