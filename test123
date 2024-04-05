@@ -15,6 +15,12 @@ local userId = localPlayer.UserId
 local userName = localPlayer.Name
 
 
+-- This loop should be removed, as you are now reusing the SG if it exists
+for i,v in next, game.CoreGui:GetChildren() do
+     if v:IsA("ScreenGui") and v.Name == "Neverlose" then
+         v:Destroy() 
+    end
+end
 
 
 local themouse = game.Players.LocalPlayer:GetMouse()
