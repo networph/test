@@ -1239,7 +1239,7 @@ function Library:Window(options)
 					local function createProfileDisplay()
 						local avatarSize = 50 -- Reduced size for the avatar image
 						local sideBarBottomSpace = 10 -- Space from the bottom of the SideBar
-						local lineHeight = 2 -- The thickness of your line
+						local lineHeight = 4 -- The thickness of your line
 						local lineSpacing = 5 -- Space above the line
 						local profileFrame = Instance.new("Frame")
 						local avatarImage = Instance.new("ImageLabel")
