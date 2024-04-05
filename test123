@@ -1,3 +1,8 @@
+local SG = game.CoreGui:FindFirstChild("Neverlose") or Instance.new("ScreenGui")
+SG.Name = "Neverlose"
+SG.Parent = game.CoreGui
+
+
 local Library = {}
 
 local NeverloseVersion = "v1.1A."
@@ -10,11 +15,7 @@ local userId = localPlayer.UserId
 local userName = localPlayer.Name
 
 
-for i,v in next, game.CoreGui:GetChildren() do
-    if v:IsA("ScreenGui") and v.Name == "Neverlose" then
-        v:Destroy() 
-    end
-end
+
 
 local themouse = game.Players.LocalPlayer:GetMouse()
 
@@ -1296,6 +1297,15 @@ function Library:Window(options)
 					createProfileDisplay() -- Call this function after the SideBar has been set up
 					-- Call this function after the SideBar has been set up
 					
+					input.InputBegan:Connect(function(key)
+						if key.KeyCode == Enum.KeyCode.RightShift then
+							if SG then
+								SG.Enabled = not SG.Enabled
+							end
+						end
+					end)
+					
+
                 end
 
                 return elements
@@ -1310,7 +1320,19 @@ function Library:Window(options)
     return tabsections
 end
 
+-- ... (Your existing code)
+
+-- Right Shift key toggle for GUI
+input.InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.RightShift then
+        if SG then
+            SG.Enabled = not SG.Enabled
+        end
+    end
+end)
+
 return Library
+
 
 -- lo
 -- lo
