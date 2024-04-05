@@ -21,15 +21,6 @@ local function Notify(tt, tx)
     })
 end
 
-local function createBlurEffect(size)
-    local blur = Instance.new("BlurEffect")
-    blur.Size = size
-    blur.Enabled = true
-    blur.Parent = game.Lighting
-    return blur
-end
-
-
 local function Dragify(frame, parent)
 
     parent = parent or frame
@@ -148,11 +139,8 @@ function Library:Window(options)
     SideBar.Name = "SideBar"
     SideBar.Parent = Body
     SideBar.BackgroundColor3 = Color3.fromRGB(26, 36, 48)
-    SideBar.BackgroundTransparency = 0.5 -- Adjust transparency as desired
     SideBar.BorderSizePixel = 0
     SideBar.Size = UDim2.new(0, 187, 0, 516)
-    SideBar.ZIndex = 2 -- Make sure this is above the blur effect's ZIndex
-
 
     sidebarCorner.CornerRadius = UDim.new(0, 4)
     sidebarCorner.Name = "sidebarCorner"
@@ -265,7 +253,7 @@ function Library:Window(options)
         tabSectionLabel.Size = UDim2.new(0, 190, 0, 22)
         tabSectionLabel.Font = Enum.Font.Gotham
         tabSectionLabel.Text = "     ".. options.text
-        tabSectionLabel.TextColor3 = Color3.fromRGB(79, 107, 126)
+        tabSectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
         tabSectionLabel.TextSize = 17.000
         tabSectionLabel.TextXAlignment = Enum.TextXAlignment.Left
 
