@@ -1273,7 +1273,7 @@ function Library:Window(options)
 						avatarImage.BorderSizePixel = 0
 						avatarImage.Position = UDim2.new(0, sideBarBottomSpace, 0, 0)
 						avatarImage.Size = UDim2.new(0, avatarSize, 0, avatarSize)
-						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=10&h=100"
+						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=100&h=100"
 					
 						-- Username Label Setup
 						usernameLabel.Name = "UsernameLabel"
@@ -1311,3 +1311,13 @@ function Library:Window(options)
 end
 
 return Library
+
+-- lo
+-- lo
+-- lo
+-- spam lol
+
+-- lo
+-- lo
+-- lo
+-- spam lol
