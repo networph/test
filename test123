@@ -183,7 +183,7 @@ function Library:Window(options)
     Title.TextSize = 28.000
     Title.TextWrapped = true
 
-   --[[ saveBtn.Name = "saveBtn"
+    saveBtn.Name = "saveBtn"
     saveBtn.Parent = TopBar
     saveBtn.AnchorPoint = Vector2.new(0.5, 0.5)
     saveBtn.BackgroundColor3 = Color3.fromRGB(9, 8, 13)
@@ -204,7 +204,7 @@ function Library:Window(options)
     saveLabel.Size = UDim2.new(0, 18, 0, 18)
     saveLabel.Image = "rbxassetid://7999984136"
     saveLabel.ImageColor3 = Color3.fromRGB(132, 146, 153)
-    --]]
+    
 
     allPages.Name = "allPages"
     allPages.Parent = Body
@@ -1124,110 +1124,92 @@ function Library:Window(options)
                     setcolor({hue,sat,val})
                 end
 
-				function elements:Keybind(options)
-					if not options.text or not options.default or not options.callback then
-						Notify("Keybind", "Missing arguments")
-						return
-					end
-				
-					Resize(25)
-				
-					local blacklisted = {
-						Return = true,
-						Space = true,
-						Tab = true,
-						W = true,
-						A = true,
-						S = true,
-						D = true,
-						I = true,
-						O = true,
-						Unknown = true
-					}
-				
-					local short = {
-						RightControl = "RCtrl",
-						LeftControl = "LCtrl",
-						LeftShift = "LShift",
-						RightShift = "RShift",
-						MouseButton1 = "M1",
-						MouseButton2 = "M2",
-						LeftAlt = "LAlt",
-						RightAlt = "RAlt"
-					}
-				
-					local oldKey = options.default.Name
-					local Keybind = Instance.new("Frame")
-					local keybindButton = Instance.new("TextButton")
-					local keybindLabel = Instance.new("TextLabel")
-				
-					-- Keybind Frame Setup
-					Keybind.Name = "Keybind"
-					Keybind.Parent = sectionFrame
-					Keybind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					Keybind.BackgroundTransparency = 1.000
-					Keybind.BorderSizePixel = 0
-					Keybind.Position = UDim2.new(0.0348837227, 0, 0.945454538, 0)
-					Keybind.Size = UDim2.new(0, 200, 0, 22)
-					Keybind.ZIndex = 2
-				
-					-- Keybind Button Setup
-					keybindButton.Name = "keybindButton"
-					keybindButton.Parent = Keybind
-					keybindButton.AnchorPoint = Vector2.new(0.5, 0.5)
-					keybindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-					keybindButton.BackgroundTransparency = 1.000
-					keybindButton.BorderSizePixel = 0
-					keybindButton.Position = UDim2.new(0.5, 0, 0.5, 0)
-					keybindButton.Size = UDim2.new(0, 200, 0, 22)
-					keybindButton.AutoButtonColor = false
-					keybindButton.Font = Enum.Font.Gotham
-					keybindButton.Text = " " .. options.text
-					keybindButton.TextColor3 = Color3.fromRGB(157, 171, 182)
-					keybindButton.TextSize = 14.000
-					keybindButton.TextXAlignment = Enum.TextXAlignment.Left
-				
-					-- Keybind Label Setup
-					keybindLabel.Name = "keybindLabel"
-					keybindLabel.Parent = keybindButton
-					keybindLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-					keybindLabel.BackgroundColor3 = Color3.fromRGB(157, 171, 182)
-					keybindLabel.BackgroundTransparency = 1.000
-					keybindLabel.Position = UDim2.new(0.910000026, 0, 0.5, 0)
-					keybindLabel.Size = UDim2.new(0, 36, 0, 22)
-					keybindLabel.Font = Enum.Font.Gotham
-					keybindLabel.Text = oldKey .. " "
-					keybindLabel.TextColor3 = Color3.fromRGB(157, 171, 182)
-					keybindLabel.TextSize = 14.000
-					keybindLabel.TextXAlignment = Enum.TextXAlignment.Right
-				
-					-- Button Click Event
-					keybindButton.MouseButton1Click:Connect(function()
-						keybindLabel.Text = "... "
-						TweenService:Create(keybindButton, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-							TextColor3 = Color3.fromRGB(234, 239, 246)
-						}):Play()
-						TweenService:Create(keybindLabel, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-							TextColor3 = Color3.fromRGB(234, 239, 246)
-						}):Play()
-						local inputBeganConnection
-						inputBeganConnection = game:GetService("UserInputService").InputBegan:Connect(function(input)
-							if input.UserInputType == Enum.UserInputType.Keyboard and not blacklisted[input.KeyCode.Name] then
-								keybindLabel.Text = short[input.KeyCode.Name] or input.KeyCode.Name
-								oldKey = input.KeyCode.Name
-								options.callback(input.KeyCode)
-								inputBeganConnection:Disconnect()
-							end
-							TweenService:Create(keybindButton, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-								TextColor3 = Color3.fromRGB(157, 171, 182)
-							}):Play()
-							TweenService:Create(keybindLabel, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
-								TextColor3 = Color3.fromRGB(157, 171, 182)
-							}):Play()
-						end)
-					end)
-				end
-				
+                function elements:Keybind(options)
+                    if not options.text or not options.default or not options.callback then Notify("Keybind", "Missing arguments") return end
+
+                    Resize(25)
+
+                    local blacklisted = {
+                        Return = true,
+                        Space = true,
+                        Tab = true,
+                        W = true,
+                        A = true,
+                        S = true,
+                        D = true,
+                        I = true,
+                        O = true,
+                        Unknown = true
+                    }
+
+                    local short = {
+                        RightControl = "RCtrl",
+                        LeftControl = "LCtrl",
+                        LeftShift = "LShift",
+                        RightShift = "RShift",
+                        MouseButton1 = "M1",
+                        MouseButton2 = "M2",
+                        LeftAlt = "LAlt",
+                        RightAlt = "RAlt"
+                    }
+
+                    local oldKey = options.default.Name
+                    local Keybind = Instance.new("Frame")
+                    local keybindButton = Instance.new("TextButton")
+                    local keybindLabel = Instance.new("TextLabel")
+
+                    Keybind.Name = "Keybind"
+                    Keybind.Parent = sectionFrame
+                    Keybind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    Keybind.BackgroundTransparency = 1.000
+                    Keybind.BorderSizePixel = 0
+                    Keybind.Position = UDim2.new(0.0348837227, 0, 0.945454538, 0)
+                    Keybind.Size = UDim2.new(0, 200, 0, 22)
+                    Keybind.ZIndex = 2
+                    buttoneffect({frame = keybindButton, entered = Keybind})
+
+                    keybindButton.Name = "keybindButton"
+                    keybindButton.Parent = Keybind
+                    keybindButton.AnchorPoint = Vector2.new(0.5, 0.5)
+                    keybindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                    keybindButton.BackgroundTransparency = 1.000
+                    keybindButton.BorderSizePixel = 0
+                    keybindButton.Position = UDim2.new(0.5, 0, 0.5, 0)
+                    keybindButton.Size = UDim2.new(0, 200, 0, 22)
+                    keybindButton.AutoButtonColor = false
+                    keybindButton.Font = Enum.Font.Gotham
+                    keybindButton.Text = " " .. options.text
+                    keybindButton.TextColor3 = Color3.fromRGB(157, 171, 182)
+                    keybindButton.TextSize = 14.000
+                    keybindButton.TextXAlignment = Enum.TextXAlignment.Left
+                    keybindButton.MouseButton1Click:Connect(function()
+                        keybindLabel.Text = "... "
+                        TweenService:Create(keybindButton, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                            TextColor3 = Color3.fromRGB(234, 239, 246)
+                        }):Play()
+                        TweenService:Create(keybindLabel, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                            TextColor3 = Color3.fromRGB(234, 239, 246)
+                        }):Play()
+                        local inputbegan = game:GetService("UserInputService").InputBegan:wait()
+                        if not blacklisted[inputbegan.KeyCode.Name] then
+                            TweenService:Create(keybindLabel, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                                TextColor3 = Color3.fromRGB(157, 171, 182)
+                            }):Play()
+                            TweenService:Create(keybindButton, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                                TextColor3 = Color3.fromRGB(157, 171, 182)
+                            }):Play()
+                            keybindLabel.Text = short[inputbegan.KeyCode.Name] or inputbegan.KeyCode.Name
+                            oldKey = inputbegan.KeyCode.Name
+                        else
+                            TweenService:Create(keybindButton, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                                TextColor3 = Color3.fromRGB(157, 171, 182)
+                            }):Play()
+                            TweenService:Create(keybindLabel, TweenInfo.new(0.06, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                                TextColor3 = Color3.fromRGB(157, 171, 182)
+                            }):Play()
+                            keybindLabel.Text = short[oldKey] or oldKey
+                        end
+                    end)
 
                     game:GetService("UserInputService").InputBegan:connect(function(key, focused)
                         if not focused then
