@@ -178,7 +178,7 @@ function Library:Window(options)
     Title.Size = UDim2.new(0, 162, 0, 26)
     Title.Font = Enum.Font.ArialBold
     Title.Text = options.text
-    Title.TextColor3 = Color3.fromRGB(234, 239, 245)
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
     Title.TextSize = 28.000
     Title.TextWrapped = true
 
