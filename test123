@@ -254,7 +254,7 @@ function Library:Window(options)
         tabSectionLabel.Size = UDim2.new(0, 190, 0, 22)
         tabSectionLabel.Font = Enum.Font.Gotham
         tabSectionLabel.Text = "     ".. options.text
-        tabSectionLabel.TextColor3 = Color3.fromRGB(81,113,150)
+        tabSectionLabel.TextColor3 = Color3.fromRGB(192, 192, 192)
         tabSectionLabel.TextSize = 17.000
         tabSectionLabel.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -262,7 +262,7 @@ function Library:Window(options)
         tabSectionLayout.Parent = tabSection
         tabSectionLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
         tabSectionLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        tabSectionLayout.Padding = UDim.new(0, 5)
+        tabSectionLayout.Padding = UDim.new(0, 2)
 
         local tabs = {}
 
