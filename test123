@@ -1,3 +1,4 @@
+
 local Library = {}
 
 local NeverloseVersion = "v1.1A."
@@ -253,7 +254,7 @@ function Library:Window(options)
         tabSectionLabel.Size = UDim2.new(0, 190, 0, 22)
         tabSectionLabel.Font = Enum.Font.Gotham
         tabSectionLabel.Text = "     ".. options.text
-        tabSectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        tabSectionLabel.TextColor3 = Color3.fromRGB(81,113,150)
         tabSectionLabel.TextSize = 17.000
         tabSectionLabel.TextXAlignment = Enum.TextXAlignment.Left
 
