@@ -4,6 +4,11 @@ local NeverloseVersion = "v1.1A."
 
 local TweenService = game:GetService("TweenService")
 local input = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+local userId = localPlayer.UserId
+local userName = localPlayer.Name
+
 
 for i,v in next, game.CoreGui:GetChildren() do
     if v:IsA("ScreenGui") and v.Name == "Neverlose" then
@@ -1230,6 +1235,51 @@ function Library:Window(options)
                     keybindLabel.TextColor3 = Color3.fromRGB(157, 171, 182)
                     keybindLabel.TextSize = 14.000
                     keybindLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+					local function createProfileDisplay()
+						local avatarSize = 64 -- Size for the avatar image
+						local sideBarBottomSpace = 10 -- Space from the bottom of the SideBar
+						local profileFrame = Instance.new("Frame")
+						local avatarImage = Instance.new("ImageLabel")
+						local usernameLabel = Instance.new("TextLabel")
+					
+						-- Profile Frame Setup
+						profileFrame.Name = "ProfileFrame"
+						profileFrame.Parent = SideBar
+						profileFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						profileFrame.BackgroundTransparency = 1
+						profileFrame.BorderSizePixel = 0
+						profileFrame.Position = UDim2.new(0, 0, 1, -avatarSize - sideBarBottomSpace)
+						profileFrame.Size = UDim2.new(1, 0, 0, avatarSize)
+					
+						-- Avatar Image Setup
+						avatarImage.Name = "AvatarImage"
+						avatarImage.Parent = profileFrame
+						avatarImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						avatarImage.BackgroundTransparency = 1
+						avatarImage.BorderSizePixel = 0
+						avatarImage.Position = UDim2.new(0, sideBarBottomSpace, 0.5, -avatarSize / 2)
+						avatarImage.Size = UDim2.new(0, avatarSize, 0, avatarSize)
+						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=150&h=150" -- Roblox endpoint for headshots
+					
+						-- Username Label Setup
+						usernameLabel.Name = "UsernameLabel"
+						usernameLabel.Parent = profileFrame
+						usernameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+						usernameLabel.BackgroundTransparency = 1
+						usernameLabel.BorderSizePixel = 0
+						usernameLabel.Position = UDim2.new(0, avatarSize + (2 * sideBarBottomSpace), 0, 0)
+						usernameLabel.Size = UDim2.new(1, -(avatarSize + (3 * sideBarBottomSpace)), 1, 0)
+						usernameLabel.Font = Enum.Font.GothamSemibold
+						usernameLabel.Text = userName
+						usernameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+						usernameLabel.TextSize = 14
+						usernameLabel.TextXAlignment = Enum.TextXAlignment.Left
+						usernameLabel.TextYAlignment = Enum.TextYAlignment.Center
+					end
+					
+					createProfileDisplay() -- Call this function after the SideBar has been set up
+					
                 end
 
                 return elements
