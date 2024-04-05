@@ -1,4 +1,3 @@
--- print ( hi ) when if deal when if when when when when else else
 local Library = {}
 
 local NeverloseVersion = "v1.1A."
@@ -1274,7 +1273,7 @@ function Library:Window(options)
 						avatarImage.BorderSizePixel = 0
 						avatarImage.Position = UDim2.new(0, sideBarBottomSpace, 0, 0)
 						avatarImage.Size = UDim2.new(0, avatarSize, 0, avatarSize)
-						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=100&h=100"
+						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=90&h=90"
 					
 						-- Username Label Setup
 						usernameLabel.Name = "UsernameLabel"
