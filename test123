@@ -1239,10 +1239,20 @@ function Library:Window(options)
 					local function createProfileDisplay()
 						local avatarSize = 50 -- Reduced size for the avatar image
 						local sideBarBottomSpace = 10 -- Space from the bottom of the SideBar
+						local lineHeight = 2 -- The thickness of your line
+						local lineSpacing = 5 -- Space above the line
 						local profileFrame = Instance.new("Frame")
 						local avatarImage = Instance.new("ImageLabel")
 						local usernameLabel = Instance.new("TextLabel")
 						local line = Instance.new("Frame") -- Line above the profile
+					
+						-- Line Setup
+						line.Name = "Line"
+						line.Parent = SideBar
+						line.BackgroundColor3 = Color3.fromRGB(15, 23, 36) -- Set to desired line color
+						line.BorderSizePixel = 0
+						line.Position = UDim2.new(0, 0, 1, -(avatarSize + sideBarBottomSpace + lineHeight + lineSpacing))
+						line.Size = UDim2.new(1, 0, 0, lineHeight) -- Line thickness of 2 pixels
 					
 						-- Profile Frame Setup
 						profileFrame.Name = "ProfileFrame"
@@ -1250,16 +1260,9 @@ function Library:Window(options)
 						profileFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 						profileFrame.BackgroundTransparency = 1
 						profileFrame.BorderSizePixel = 0
-						profileFrame.Position = UDim2.new(0, 0, 1, -avatarSize - sideBarBottomSpace - 2) -- Adjusted for line height
-						profileFrame.Size = UDim2.new(1, 0, 0, avatarSize + 2) -- Adjusted for line height
-					
-						-- Line Setup
-						line.Name = "Line"
-						line.Parent = profileFrame
-						line.BackgroundColor3 = Color3.fromRGB(255, 255, 255) -- Set to desired line color
-						line.BorderSizePixel = 0
-						line.Position = UDim2.new(0, 0, 0, 0)
-						line.Size = UDim2.new(1, 0, 0, 2) -- Line thickness of 2 pixels
+						-- Adjusted for line height and line spacing
+						profileFrame.Position = UDim2.new(0, 0, 1, -(avatarSize + sideBarBottomSpace + lineHeight + lineSpacing))
+						profileFrame.Size = UDim2.new(1, 0, 0, avatarSize)
 					
 						-- Avatar Image Setup
 						avatarImage.Name = "AvatarImage"
@@ -1267,7 +1270,7 @@ function Library:Window(options)
 						avatarImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 						avatarImage.BackgroundTransparency = 1
 						avatarImage.BorderSizePixel = 0
-						avatarImage.Position = UDim2.new(0, sideBarBottomSpace, 0.5, -avatarSize / 2 + 1) -- Adjusted for line height
+						avatarImage.Position = UDim2.new(0, sideBarBottomSpace, 0.5, -avatarSize / 2)
 						avatarImage.Size = UDim2.new(0, avatarSize, 0, avatarSize)
 						avatarImage.Image = "rbxthumb://type=AvatarHeadShot&id="..userId.."&w=100&h=100"
 					
@@ -1277,8 +1280,8 @@ function Library:Window(options)
 						usernameLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 						usernameLabel.BackgroundTransparency = 1
 						usernameLabel.BorderSizePixel = 0
-						usernameLabel.Position = UDim2.new(0, avatarSize + (2 * sideBarBottomSpace), 0, 1) -- Adjusted for line height
-						usernameLabel.Size = UDim2.new(1, -(avatarSize + (3 * sideBarBottomSpace)), 1, -2) -- Adjusted for line height
+						usernameLabel.Position = UDim2.new(0, avatarSize + (2 * sideBarBottomSpace), 0, 0)
+						usernameLabel.Size = UDim2.new(1, -(avatarSize + (3 * sideBarBottomSpace)), 1, 0)
 						usernameLabel.Font = Enum.Font.GothamSemibold
 						usernameLabel.Text = userName
 						usernameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -1286,6 +1289,7 @@ function Library:Window(options)
 						usernameLabel.TextXAlignment = Enum.TextXAlignment.Left
 						usernameLabel.TextYAlignment = Enum.TextYAlignment.Center
 					end
+					
 					
 					createProfileDisplay() -- Call this function after the SideBar has been set up
 					-- Call this function after the SideBar has been set up
