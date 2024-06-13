@@ -122,6 +122,20 @@ local function DescriptionLabel(Text)
 	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size, DescriptionSettings.Color);
 end
 
+local function CreateLine()
+	local Line = Instance.new("Frame");
+	Line.Size = UDim2.new(0, 4, 1, -20);
+	Line.Position = UDim2.new(0, 3, 0, 10);
+	Line.BackgroundColor3 = TitleSettings.Color;
+	Line.BorderSizePixel = 0;
+	
+	local Corner = Instance.new("UICorner");
+	Corner.CornerRadius = UDim.new(1, 0);
+	Corner.Parent = Line;
+	
+	return Line;
+end
+
 local PropertyTweenOut = {
 	Text = "TextTransparency",
 	Fram = "BackgroundTransparency",
@@ -209,6 +223,10 @@ return {
 				NewDescription.TextYAlignment = Enum.TextYAlignment[Title and "Top" or "Center"];
 				NewDescription.Parent = NewLabel;
 			end
+			
+			local Line = CreateLine();
+			Line.Parent = NewLabel;
+			
 			Shadow2px().Parent = NewLabel;
 			NewLabel.Parent = Container;
 			table.insert(InstructionObjects, {NewLabel, 0, false});
