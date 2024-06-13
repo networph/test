@@ -91,16 +91,18 @@ RunService:BindToRenderStep("UpdateList", 0, Update);
 local TitleSettings = {
 	Font = Enum.Font.GothamSemibold;
 	Size = 14;
+	Color = Color3.fromRGB(168, 180, 245);  -- Set the title color here
 }
 
 local DescriptionSettings = {
 	Font = Enum.Font.Gotham;
 	Size = 14;
+	Color = Color3.fromRGB(255, 255, 255);  -- Set the description color here if needed
 }
 
 local MaxWidth = (Container.AbsoluteSize.X - Padding - DescriptionPadding);
 
-local function Label(Text, Font, Size, Button)
+local function Label(Text, Font, Size, Color, Button)
 	local Label = Instance.new(string.format("Text%s", Button and "Button" or "Label"));
 	Label.Text = Text;
 	Label.Font = Font;
@@ -108,16 +110,16 @@ local function Label(Text, Font, Size, Button)
 	Label.BackgroundTransparency = 1;
 	Label.TextXAlignment = Enum.TextXAlignment.Left;
 	Label.RichText = true;
-	Label.TextColor3 = Color3.fromRGB(255, 255, 255);
+	Label.TextColor3 = Color;
 	return Label;
 end
 
 local function TitleLabel(Text)
-	return Label(Text, TitleSettings.Font, TitleSettings.Size);
+	return Label(Text, TitleSettings.Font, TitleSettings.Size, TitleSettings.Color);
 end
 
 local function DescriptionLabel(Text)
-	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size);
+	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size, DescriptionSettings.Color);
 end
 
 local PropertyTweenOut = {
