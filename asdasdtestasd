@@ -12,7 +12,7 @@ local Container = Instance.new("Frame");
 Container.Name = "Container";
 Container.Position = UDim2.new(0, 20, 0.5, -20);
 Container.Size = UDim2.new(0, 300, 0.5, 0);
-Container.BackgroundTransparency = 0.2;
+Container.BackgroundTransparency = 1;
 Container.Parent = NotifGui;
 
 local function Image(ID, Button)
@@ -27,6 +27,7 @@ local function Round2px()
 	NewImage.ScaleType = Enum.ScaleType.Slice;
 	NewImage.SliceCenter = Rect.new(2, 2, 298, 298);
 	NewImage.ImageColor3 = Color3.fromRGB(30, 30, 30);
+	NewImage.ImageTransparency = 0.2;  -- Set the background transparency here
 	return NewImage;
 end
 
