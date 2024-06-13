@@ -91,18 +91,16 @@ RunService:BindToRenderStep("UpdateList", 0, Update);
 local TitleSettings = {
 	Font = Enum.Font.GothamSemibold;
 	Size = 14;
-	Color = Color3.fromRGB(168, 180, 245);  -- Set the title color here
 }
 
 local DescriptionSettings = {
 	Font = Enum.Font.Gotham;
 	Size = 14;
-	Color = Color3.fromRGB(255, 255, 255);  -- Set the description color here if needed
 }
 
 local MaxWidth = (Container.AbsoluteSize.X - Padding - DescriptionPadding);
 
-local function Label(Text, Font, Size, Color, Button)
+local function Label(Text, Font, Size, Button)
 	local Label = Instance.new(string.format("Text%s", Button and "Button" or "Label"));
 	Label.Text = Text;
 	Label.Font = Font;
@@ -110,30 +108,16 @@ local function Label(Text, Font, Size, Color, Button)
 	Label.BackgroundTransparency = 1;
 	Label.TextXAlignment = Enum.TextXAlignment.Left;
 	Label.RichText = true;
-	Label.TextColor3 = Color;
+	Label.TextColor3 = Color3.fromRGB(255, 255, 255);
 	return Label;
 end
 
 local function TitleLabel(Text)
-	return Label(Text, TitleSettings.Font, TitleSettings.Size, TitleSettings.Color);
+	return Label(Text, TitleSettings.Font, TitleSettings.Size);
 end
 
 local function DescriptionLabel(Text)
-	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size, DescriptionSettings.Color);
-end
-
-local function CreateLine()
-	local Line = Instance.new("Frame");
-	Line.Size = UDim2.new(0, 4, 1, -20);
-	Line.Position = UDim2.new(0, 3, 0, 10);
-	Line.BackgroundColor3 = TitleSettings.Color;
-	Line.BorderSizePixel = 0;
-	
-	local Corner = Instance.new("UICorner");
-	Corner.CornerRadius = UDim.new(1, 0);
-	Corner.Parent = Line;
-	
-	return Line;
+	return Label(Text, DescriptionSettings.Font, DescriptionSettings.Size);
 end
 
 local PropertyTweenOut = {
@@ -223,10 +207,6 @@ return {
 				NewDescription.TextYAlignment = Enum.TextYAlignment[Title and "Top" or "Center"];
 				NewDescription.Parent = NewLabel;
 			end
-			
-			local Line = CreateLine();
-			Line.Parent = NewLabel;
-			
 			Shadow2px().Parent = NewLabel;
 			NewLabel.Parent = Container;
 			table.insert(InstructionObjects, {NewLabel, 0, false});
