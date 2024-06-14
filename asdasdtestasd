@@ -1203,6 +1203,7 @@ local function getObjGen()
             Gui.Window.BackgroundTransparency = 1.000
             Gui.Window.Size = UDim2.new(1, 0, 1, 0)
 
+            Gui.Watermark = Instance.new("TextLabel")
             Gui.Watermark.Name = "Watermark"
             Gui.Watermark.Parent = Gui.Window
             Gui.Watermark.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
