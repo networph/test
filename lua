@@ -1211,7 +1211,7 @@ local function getObjGen()
             Gui.Watermark.Size = UDim2.new(0.5, 0, 0.0199999996, 0)
             Gui.Watermark.Font = Enum.Font.Gotham
             Gui.Watermark.Text = "euphoria | nil | nil"
-            Gui.Watermark.TextColor3 = Color3.fromRGB(114, 122, 217)
+            Gui.Watermark.TextColor3 = Color3.fromRGB(191, 255, 186)
             Gui.Watermark.TextSize = 14.000
             Gui.Watermark.TextStrokeTransparency = 0
             Gui.Watermark.TextXAlignment = Enum.TextXAlignment.Left
